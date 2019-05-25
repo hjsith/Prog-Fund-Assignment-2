@@ -15,20 +15,41 @@ public class Dot
     /**
      * Constructor for objects of class Dot
      */
-    public Dot(int iniX, int iniY)
-    {
+    public Dot(int iniX, int iniY) {
         // initialise instance variables
-        this.x = iniX;
-        this.y = iniY;
-        this.exists = true;
+        x = iniX;
+        y = iniY;
+        exists = true;
+        
     }
     
     public void disappear() {
+        
         exists = false;
+        
     }
     
     public String toString() {
-       return "Dot" + Util.objectStr(x, y, exists); 
+        
+       return "Dot" + Util.objectStr(x, y, exists);
+       
     }
-
+    
+    public int getDotX() {
+        
+        return x;
+        
+    }
+    
+    public int getDotY() {
+        
+        return y;
+        
+    }
+    
+    public boolean verifyExist() {
+        
+        return exists;
+        
+    }
 }
