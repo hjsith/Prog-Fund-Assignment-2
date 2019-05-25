@@ -15,18 +15,16 @@ public class Player
     /**
      * Constructor for objects of class Player
      */
-    public Player(int iniX, int iniY)
-    {
-
-    
+    public Player(int iniX, int iniY) {
+        
         x = iniX;
         y = iniY;
         collectedDots = 0;
+        
     }
     
     public void move(int dx, int dy) {
-        
-        
+   
         x += dx;
         y += dy;
         
@@ -34,23 +32,50 @@ public class Player
     
     public void collect(Dot dot) {
         
-        if (this.x == 1 && this.y == 1) {
+        int dotX = dot.getDotX();
+        int dotY = dot.getDotY();
+        boolean exists = dot.verifyExist();
+        
+        if (x == dotX && y == dotY && exists == true) {
+                        
             ++collectedDots;
             dot.disappear();
+            
         }
         
-        else if (this.x == 2 && this.y == 2) {
-            ++collectedDots;
-            dot.disappear();
+
+    }
+    
+    public boolean conditionCheck() {
+        
+        if (collectedDots == 3 && x == 4 && y == 4) {
+            return true;
+        } else {
+            return false;
         }
         
-        else if (this.x == 3 && this.y == 3) {
-            ++collectedDots;
-            dot.disappear();
-        }
     }
     
     public String toString() {
-       return "Player[" + collectedDots + "]" + Util.objectStr(x, y, true);
+        
+        int i;
+        String stars = "";
+        
+        for (i = 0; i < collectedDots; ++i) {
+            
+            stars += "*";
+            
+        }
+        
+        if (collectedDots == 0) {
+            
+            return "Player[]" + Util.objectStr(x, y, true);
+            
+        } else {
+            
+            return "Player[" + stars + "]" + Util.objectStr(x, y, true);
+            
+        }
+        
     }
 }
